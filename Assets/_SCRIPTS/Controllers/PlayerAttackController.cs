@@ -11,6 +11,7 @@ namespace _SCRIPTS.Controllers
 
         [SerializeField] private MMFeedbacks shootFb;
         private bool _canAttack = true;
+        private int _killCount;
 
         private void OnEnable()
         {
@@ -21,6 +22,8 @@ namespace _SCRIPTS.Controllers
         {
             CoreGameSignals.Instance.OnSetGetAttack += OnSetCanAttack;
             CoreGameSignals.Instance.OnGetCanAttack += OnGetCanAttack;
+            CoreGameSignals.Instance.OnGetKillCount += OnGetKillCount;
+            CoreGameSignals.Instance.OnIncreaseKillCount += OnIncreaseKillCount;
         }
 
 
@@ -52,6 +55,16 @@ namespace _SCRIPTS.Controllers
         private bool OnGetCanAttack()
         {
             return _canAttack;
+        }
+
+        private int OnGetKillCount()
+        {
+            return _killCount;
+        }
+
+        private void OnIncreaseKillCount()
+        {
+            _killCount++;
         }
 
         

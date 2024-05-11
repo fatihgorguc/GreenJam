@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 611878622106305677}
   - component: {fileID: 4699225121304725422}
   - component: {fileID: 2816246193246060193}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpeed: 15
+  desiredSpeed: 10
 --- !u!1001 &8181191124167602852
 PrefabInstance:
   m_ObjectHideFlags: 0

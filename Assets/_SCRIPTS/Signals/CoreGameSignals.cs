@@ -11,8 +11,10 @@ namespace _SCRIPTS.Signals
         public Func<Vector3> OnGetMovementDirection= () => default;
         public Func<bool> OnGetCanAttack= () => default;
         public UnityAction OnIncreaseSoulMeter = delegate {  };
-        
-        
+        public Func<int> OnGetKillCount = () => 0;
+        public UnityAction OnIncreaseKillCount = delegate {  };
+
+
         public UnityAction OnSetGetAttack = delegate {  };
         
         //public UnityAction<MainMenuStates> OnMainMenuUIManagement = delegate {  };

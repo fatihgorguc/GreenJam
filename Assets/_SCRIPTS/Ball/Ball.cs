@@ -11,6 +11,7 @@ namespace _SCRIPTS.Ball
 
         private GameObject _model;
         private Rigidbody _rigidbody;
+        [SerializeField] private int desiredSpeed;
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -33,9 +34,30 @@ namespace _SCRIPTS.Ball
             SetModelTowardsVelocity();
         }
 
+        private void FixedUpdate()
+        {
+            ConstantVelocity();
+        }
+
+        private void ConstantVelocity()
+        {
+            _rigidbody.velocity = _rigidbody.velocity.normalized * desiredSpeed;
+        }
+
         private void SetModelTowardsVelocity()
         {
             _model.transform.forward = _rigidbody.velocity.normalized;
+        }
+        
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.gameObject.CompareTag("Enemy"))
+            {
+                
+                CoreGameSignals.Instance.OnIncreaseKillCount.Invoke();
+                Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
+                Destroy(collision.gameObject,0.2f);
+            }
         }
     }
 }

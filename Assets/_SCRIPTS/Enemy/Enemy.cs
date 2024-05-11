@@ -1,4 +1,6 @@
+using System;
 using _SCRIPTS.Controllers;
+using _SCRIPTS.Signals;
 using UnityEngine;
 
 namespace _SCRIPTS.Enemy
@@ -26,5 +28,7 @@ namespace _SCRIPTS.Enemy
             _targetPosition = Vector3.Lerp(_targetPosition, _player.transform.position, damping * Time.deltaTime);
             transform.position += (_targetPosition - transform.position).normalized * (moveSpeed * Time.deltaTime);
         }
+
+        
     }
 }
