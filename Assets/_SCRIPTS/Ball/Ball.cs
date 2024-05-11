@@ -8,10 +8,13 @@ namespace _SCRIPTS.Ball
     public class Ball : MonoBehaviour
     {
         [SerializeField] private int ballSpeed;
+
+        private GameObject _model;
         private Rigidbody _rigidbody;
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _model = GetComponentInChildren<MeshRenderer>().gameObject;
         }
 
         private void Start()
@@ -24,11 +27,15 @@ namespace _SCRIPTS.Ball
         {
             await Task.Delay(200);
         }
-
-        // Update is called once per frame
+        
         void Update()
         {
-        
+            SetModelTowardsVelocity();
+        }
+
+        private void SetModelTowardsVelocity()
+        {
+            _model.transform.forward = _rigidbody.velocity.normalized;
         }
     }
 }

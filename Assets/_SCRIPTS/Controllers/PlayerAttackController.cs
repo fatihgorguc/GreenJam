@@ -1,5 +1,6 @@
 using System;
 using _SCRIPTS.Signals;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 namespace _SCRIPTS.Controllers
@@ -7,6 +8,8 @@ namespace _SCRIPTS.Controllers
     public class PlayerAttackController : MonoBehaviour
     {
         [SerializeField] private Transform attackPoint;
+
+        [SerializeField] private MMFeedbacks shootFb;
         private bool _canAttack = true;
 
         private void OnEnable()
@@ -37,6 +40,7 @@ namespace _SCRIPTS.Controllers
                 _canAttack = false;
                 Instantiate(Resources.Load<GameObject>("Ball"),
                     attackPoint.position,attackPoint.rotation);
+                shootFb.PlayFeedbacks();
             }
         }
 
