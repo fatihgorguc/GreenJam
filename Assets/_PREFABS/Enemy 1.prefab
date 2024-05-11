@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2299480024709627921}
   - component: {fileID: 8938667880784358117}
   - component: {fileID: 225469342908026615}
+  - component: {fileID: 8124807803006542775}
   m_Layer: 0
   m_Name: DieFB
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Feedbacks:
   - {fileID: 225469342908026615}
+  - {fileID: 8124807803006542775}
   - {fileID: 2299480024709627921}
   - {fileID: 8938667880784358117}
   InitializationMode: 2
@@ -350,6 +352,44 @@ MonoBehaviour:
   DebugActive: 0
   TargetCollider: {fileID: 6797553562638912344}
   Mode: 1
+--- !u!114 &8124807803006542775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037165720514824986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a735df4ed5161bc4a89ba41ab2149469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Destroy
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  TargetGameObject: {fileID: 6932437871553562191}
+  Mode: 0
 --- !u!1 &1081994572791472107
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   damping: 5
+  dieFb: {fileID: 0}
 --- !u!95 &1186078498608066222
 Animator:
   serializedVersion: 5
@@ -667,6 +708,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdc17b6841d09eb45b79ed8276cb3cb9, type: 3}
+--- !u!1 &6932437871553562191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bdc17b6841d09eb45b79ed8276cb3cb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7851355601981897502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7745952967518985461 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bdc17b6841d09eb45b79ed8276cb3cb9,

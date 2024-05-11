@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 456028427349399474}
   - component: {fileID: 2983922357044132393}
   - component: {fileID: 322977534220949837}
+  - component: {fileID: 1304757019896633404}
   m_Layer: 0
   m_Name: DieFB
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Feedbacks:
   - {fileID: 322977534220949837}
+  - {fileID: 1304757019896633404}
   - {fileID: 456028427349399474}
   - {fileID: 2983922357044132393}
   InitializationMode: 2
@@ -350,6 +352,44 @@ MonoBehaviour:
   DebugActive: 0
   TargetCollider: {fileID: 4992294524095672051}
   Mode: 1
+--- !u!114 &1304757019896633404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478959880651453470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a735df4ed5161bc4a89ba41ab2149469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Destroy
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  TargetGameObject: {fileID: 122457851347617158}
+  Mode: 0
 --- !u!1 &3206931231846483875
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +669,7 @@ GameObject:
   - component: {fileID: 6719462240413016203}
   - component: {fileID: 4992294524095672051}
   - component: {fileID: 4299798686424403658}
-  - component: {fileID: -2569056247173389334}
+  - component: {fileID: 5780125199662340193}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -725,7 +765,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-2569056247173389334
+--- !u!114 &5780125199662340193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -734,11 +774,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7220805134493534991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f40f031cd56399141a13869a6fbc8a7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 66ab92995f2bade4897b73242d3548ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
   damping: 5
+  attackRange: 5
+  dartSpeed: 5
+  attackFb: {fileID: 5680286824923317603}
+  dieFb: {fileID: 0}
+  dartPrefab: {fileID: 8971788630802026915, guid: c9789c3f330dbd54495d5d8b734fc14e,
+    type: 3}
 --- !u!1001 &968950212909693143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -848,6 +894,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b34cc11022b26264a9784bf6feb6ab93, type: 3}
+--- !u!1 &122457851347617158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b34cc11022b26264a9784bf6feb6ab93,
+    type: 3}
+  m_PrefabInstance: {fileID: 968950212909693143}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &790626276136722236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b34cc11022b26264a9784bf6feb6ab93,

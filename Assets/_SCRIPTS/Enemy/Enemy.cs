@@ -1,6 +1,7 @@
 using System;
 using _SCRIPTS.Controllers;
 using _SCRIPTS.Signals;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 namespace _SCRIPTS.Enemy
@@ -9,6 +10,7 @@ namespace _SCRIPTS.Enemy
     {
         [SerializeField] private float moveSpeed = 5;
         [SerializeField] private float damping = 5;
+        [SerializeField] private MMFeedbacks dieFb;
         
         private PlayerMovementController _player;
         private Vector3 _targetPosition;
@@ -29,6 +31,11 @@ namespace _SCRIPTS.Enemy
             transform.position += (_targetPosition - transform.position).normalized * (moveSpeed * Time.deltaTime);
         }
 
+        private void Die()
+        {
+            dieFb.PlayFeedbacks();
+            Destroy(gameObject,1f);
+        }
         
     }
 }
