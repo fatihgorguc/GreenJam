@@ -7,18 +7,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Purple
+  m_Name: Emission
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
-  m_Parent: {fileID: 2100000, guid: e351ec82ca9effd459928cbe18ef204e, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_Parent: {fileID: 2100000, guid: 3e7c8e161967c474ba945176d871424e, type: 2}
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - DR_CEL_EXTRA_ON
   - DR_SPECULAR_ON
   - _CELPRIMARYMODE_SINGLE
+  - _EMISSION
   - _TEXTUREBLENDINGMODE_MULTIPLY
   m_InvalidKeywords:
   - _UNITYSHADOWMODE_NONE
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -33,10 +34,11 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _BaseColor: {r: 0.45706585, g: 0.28764686, b: 0.6037736, a: 1}
-    - _ColorDim: {r: 0.28599408, g: 0.12348701, b: 0.3490566, a: 1}
-    - _ColorDimExtra: {r: 0.0754717, g: 0.01744393, b: 0.06303717, a: 1}
-    - _FlatSpecularColor: {r: 0.990566, g: 0.4999555, b: 0.6328222, a: 1}
+    - _BaseColor: {r: 0.8745099, g: 0.20392159, b: 0.36078432, a: 1}
+    - _ColorDim: {r: 0.44313726, g: 0.054901958, b: 0.09850001, a: 1}
+    - _ColorDimExtra: {r: 0.14117648, g: 0.013652948, b: 0.007843133, a: 1}
+    - _EmissionColor: {r: 2.0551372, g: 0.5525604, b: 0.8530762, a: 1}
+    - _FlatSpecularColor: {r: 1, g: 0.43867922, b: 0.43867922, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7650816384120798305
 MonoBehaviour:
