@@ -24,6 +24,11 @@ namespace _SCRIPTS.UI
             SubscribeEvents();
         }
 
+        private void Start()
+        {
+            ResetSoulMeter();
+        }
+
         void Update()
         {
             ReduceBarMeter();
@@ -35,7 +40,7 @@ namespace _SCRIPTS.UI
 
         private void SubscribeEvents()
         {
-            CoreGameSignals.Instance.OnIncreaseSoulMeter += OnIncreaseSoulMeter;
+            CoreGameSignals.Instance.OnIncreaseSoulMeter += ResetSoulMeter;
         }
     
         private void ReduceBarMeter()
@@ -47,9 +52,10 @@ namespace _SCRIPTS.UI
             }
         }
 
-        private void OnIncreaseSoulMeter()
+        private void ResetSoulMeter()
         {
-            GetComponent<Image>().fillAmount = 1;
+            _barMeter.fillAmount = 1;
+            _barMeter.color = gradient.Evaluate(1);
         }
     
         #endregion
