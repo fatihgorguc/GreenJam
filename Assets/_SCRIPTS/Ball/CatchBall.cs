@@ -11,6 +11,11 @@ namespace _SCRIPTS.Ball
             {
                 Destroy(other.gameObject);
                 CoreGameSignals.Instance.OnSetGetAttack.Invoke();
+                CoreGameSignals.Instance.OnIncreaseSoulMeter.Invoke();
+            }
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                Time.timeScale = 0;
             }
         }
     }
