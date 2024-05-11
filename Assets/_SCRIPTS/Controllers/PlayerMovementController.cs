@@ -11,7 +11,7 @@ namespace _SCRIPTS.Controllers
     public class PlayerMovementController : MonoBehaviour
     {
         [SerializeField] private float rotationSpeed = 0.5f;
-        [SerializeField] private Camera mainCamera;
+        [SerializeField] private UnityEngine.Camera mainCamera;
         [SerializeField] private int speed;
         [SerializeField] private int dashSpeed;
         

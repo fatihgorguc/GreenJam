@@ -9,11 +9,9 @@ namespace _SCRIPTS.Ball
     {
         [SerializeField] private int ballSpeed;
         private Rigidbody _rigidbody;
-        [SerializeField] private Camera mainCamera;
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
-            mainCamera = Camera.main;
         }
 
         private void Start()
