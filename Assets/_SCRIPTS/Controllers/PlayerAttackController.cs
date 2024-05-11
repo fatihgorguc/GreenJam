@@ -17,7 +17,6 @@ namespace _SCRIPTS.Controllers
         private void SubscribeEvents()
         {
             CoreGameSignals.Instance.OnSetGetAttack += OnSetCanAttack;
-            CoreGameSignals.Instance.OnGetCanAttack += OnGetCanAttack;
         }
 
 
@@ -43,11 +42,6 @@ namespace _SCRIPTS.Controllers
         private void OnSetCanAttack()
         {
             _canAttack = true;
-        }
-
-        private bool OnGetCanAttack()
-        {
-            return _canAttack;
         }
 
         

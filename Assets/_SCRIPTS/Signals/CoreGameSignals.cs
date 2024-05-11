@@ -8,9 +8,7 @@ namespace _SCRIPTS.Signals
 {
     public class CoreGameSignals : MonoSingleton<CoreGameSignals>
     {
-        public Func<Vector3> OnGetMovementDirection= () => default;
-        public Func<bool> OnGetCanAttack= () => default;
-        public UnityAction OnIncreaseSoulMeter = delegate {  };
+        public Func<Vector3> OnGetMovementDirection= () => default;  
         
         
         public UnityAction OnSetGetAttack = delegate {  };
