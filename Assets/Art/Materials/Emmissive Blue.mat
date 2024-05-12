@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Emmissive Red
+  m_Name: Emmissive Blue
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
-  m_Parent: {fileID: 2100000, guid: 68ae6ecc596a1084d87f287f503ff2b7, type: 2}
+  m_Parent: {fileID: 2100000, guid: fc89d22c0e46e1843971c5fcc09d1df3, type: 2}
   m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _EMISSION
@@ -35,10 +35,10 @@ Material:
     - _CelPrimaryMode: 0
     - _SpecularEnabled: 0
     m_Colors:
-    - _BaseColor: {r: 0.4528302, g: 0.012777773, b: 0, a: 1}
+    - _BaseColor: {r: 0, g: 0.4509804, b: 0.39482138, a: 1}
     - _ColorDim: {r: 0.23658149, g: 0.59607846, b: 0.09411765, a: 1}
     - _ColorDimExtra: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 0.21568628, g: 0.02745098, b: 0.034462035, a: 1}
+    - _EmissionColor: {r: 0.02745098, g: 0.21568628, b: 0.14575507, a: 1}
     - _FlatSpecularColor: {r: 0.76870203, g: 1, b: 0.6666667, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7650816384120798305

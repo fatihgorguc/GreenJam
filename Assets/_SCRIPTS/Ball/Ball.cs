@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using _SCRIPTS.Enemy;
 using _SCRIPTS.Signals;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 namespace _SCRIPTS.Ball
@@ -13,6 +14,8 @@ namespace _SCRIPTS.Ball
         private GameObject _model;
         private Rigidbody _rigidbody;
         [SerializeField] private int desiredSpeed;
+        
+        [SerializeField] private MMFeedbacks bounceFb;
 
         private void Awake()
         {
@@ -53,6 +56,7 @@ namespace _SCRIPTS.Ball
 
         private void OnCollisionEnter(Collision collision)
         {
+            bounceFb.PlayFeedbacks();
             if (collision.gameObject.CompareTag("Enemy"))
             {
 

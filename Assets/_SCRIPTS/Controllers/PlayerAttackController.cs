@@ -10,6 +10,7 @@ namespace _SCRIPTS.Controllers
         [SerializeField] private Transform attackPoint;
 
         [SerializeField] private MMFeedbacks shootFb;
+        [SerializeField] private MMFeedbacks catchFb;
         private bool _canAttack = true;
         private int _killCount;
 
@@ -50,6 +51,7 @@ namespace _SCRIPTS.Controllers
         private void OnSetCanAttack()
         {
             _canAttack = true;
+            catchFb.PlayFeedbacks();
         }
 
         private bool OnGetCanAttack()
