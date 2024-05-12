@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 456028427349399474}
   - component: {fileID: 2983922357044132393}
   - component: {fileID: 322977534220949837}
-  - component: {fileID: 1304757019896633404}
+  - component: {fileID: 808153524230283778}
   m_Layer: 0
   m_Name: DieFB
   m_TagString: Untagged
@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Feedbacks:
   - {fileID: 322977534220949837}
-  - {fileID: 1304757019896633404}
   - {fileID: 456028427349399474}
+  - {fileID: 808153524230283778}
   - {fileID: 2983922357044132393}
   InitializationMode: 2
   AutoInitialization: 1
@@ -168,8 +168,8 @@ MonoBehaviour:
   TimeScale: 0
   AnimateScaleTarget: {fileID: 790626276136722236}
   AnimateScaleDuration: 0.15
-  RemapCurveZero: 1
-  RemapCurveOne: 1.1
+  RemapCurveZero: 0
+  RemapCurveOne: 1
   Offset: 0
   AnimateX: 1
   AnimateScaleX:
@@ -177,7 +177,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -185,8 +185,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.3
-      value: 1.5
+      time: 0.25
+      value: 1.0999985
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -219,8 +219,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.3
-      value: 1.5
+      time: 0.25
+      value: 1.0999985
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -253,8 +253,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.3
-      value: 1.5
+      time: 0.25
+      value: 1.0999985
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -352,7 +352,7 @@ MonoBehaviour:
   DebugActive: 0
   TargetCollider: {fileID: 4992294524095672051}
   Mode: 1
---- !u!114 &1304757019896633404
+--- !u!114 &808153524230283778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,11 +361,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1478959880651453470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a735df4ed5161bc4a89ba41ab2149469, type: 3}
+  m_Script: {fileID: 11500000, guid: bce85594d78e41442a7bfb6ed40e10a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Active: 1
-  Label: Destroy
+  Label: Instantiate Object
   Chance: 100
   Timing:
     TimescaleMode: 0
@@ -388,8 +388,17 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  TargetGameObject: {fileID: 122457851347617158}
-  Mode: 0
+  GameObjectToInstantiate: {fileID: 7123026242642695877, guid: 8bfeb7e382c6df14e9f62dff18398370,
+    type: 3}
+  PositionMode: 0
+  AlsoApplyRotation: 0
+  AlsoApplyScale: 0
+  TargetTransform: {fileID: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}
+  PositionOffset: {x: 0, y: 0, z: 0}
+  CreateObjectPool: 0
+  ObjectPoolSize: 5
+  MutualizePools: 0
 --- !u!1 &3206931231846483875
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,12 +898,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b34cc11022b26264a9784bf6feb6ab93, type: 3}
---- !u!1 &122457851347617158 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b34cc11022b26264a9784bf6feb6ab93,
-    type: 3}
-  m_PrefabInstance: {fileID: 968950212909693143}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &790626276136722236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b34cc11022b26264a9784bf6feb6ab93,

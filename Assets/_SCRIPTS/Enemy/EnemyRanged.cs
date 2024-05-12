@@ -18,6 +18,7 @@ namespace _SCRIPTS.Enemy
         private NavMeshAgent _agent;
 
         private bool _isAttacking = false;
+        private bool _isDead = false;
         
         private Transform _player;
         private Vector3 _targetPosition;
@@ -54,9 +55,11 @@ namespace _SCRIPTS.Enemy
 
         private void InstantiateDart()
         {
+            if (_isDead) return;
             var clone = Instantiate(dartPrefab, new Vector3(transform.position.x,transform.position.y +1,transform.position.z), transform.rotation);
             clone.GetComponent<Rigidbody>().AddForce((_player.transform.position - transform.position) * dartSpeed, ForceMode.Impulse);
             clone.transform.forward = _player.transform.position - transform.position;
+            Destroy(clone, 5f);
         }
         
         private void SetIsAttackingFalse()
@@ -66,6 +69,7 @@ namespace _SCRIPTS.Enemy
 
         public void Die()
         {
+            _isDead = true;
             dieFb.PlayFeedbacks();
             Destroy(gameObject,1f);
         }
