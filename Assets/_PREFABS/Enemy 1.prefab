@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8938667880784358117}
   - component: {fileID: 225469342908026615}
   - component: {fileID: 8077250203603394414}
+  - component: {fileID: 6623246011843248896}
   m_Layer: 0
   m_Name: DieFB
   m_TagString: Untagged
@@ -50,9 +51,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Feedbacks:
   - {fileID: 225469342908026615}
-  - {fileID: 2299480024709627921}
   - {fileID: 8077250203603394414}
+  - {fileID: 6623246011843248896}
   - {fileID: 8938667880784358117}
+  - {fileID: 2299480024709627921}
   InitializationMode: 2
   AutoInitialization: 1
   SafeMode: 3
@@ -186,7 +188,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 0.25
-      value: 1.0999985
+      value: 1.199997
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -220,7 +222,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 0.25
-      value: 1.0999985
+      value: 1.199997
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -254,7 +256,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 0.25
-      value: 1.0999985
+      value: 1.199997
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -312,7 +314,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  FreezeFrameDuration: 0.02
+  FreezeFrameDuration: 0.05
   MinimumTimescaleThreshold: 0.1
 --- !u!114 &225469342908026615
 MonoBehaviour:
@@ -399,6 +401,51 @@ MonoBehaviour:
   CreateObjectPool: 0
   ObjectPoolSize: 5
   MutualizePools: 0
+--- !u!114 &6623246011843248896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037165720514824986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fe7e41857f44348b52714b3238715c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Camera Shake
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  RepeatUntilStopped: 0
+  Channel: 0
+  CameraShakeProperties:
+    Duration: 0.1
+    Amplitude: 1
+    Frequency: 0.05
+    AmplitudeX: 0.2
+    AmplitudeY: 0.2
+    AmplitudeZ: 0.2
 --- !u!1 &1081994572791472107
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,9 @@
 using System;
 using _SCRIPTS.Signals;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 namespace _SCRIPTS.UI
@@ -10,6 +13,7 @@ namespace _SCRIPTS.UI
         [SerializeField] private float reduceSoul;
         [SerializeField] private Gradient gradient;
 
+        private Volume _volume;
         private Image _barMeter;
         
         #region Update
@@ -17,6 +21,7 @@ namespace _SCRIPTS.UI
         private void Awake()
         {
             _barMeter = GetComponent<Image>();
+            _volume = FindObjectOfType<Volume>();
         }
 
         private void OnEnable()
@@ -49,6 +54,14 @@ namespace _SCRIPTS.UI
             {
                 _barMeter.fillAmount -= reduceSoul * Time.deltaTime;
                 _barMeter.color = gradient.Evaluate(_barMeter.fillAmount);
+                if (_volume.profile.TryGet<ChromaticAberration>(out ChromaticAberration ca))
+                {
+                    ca.intensity.value = 1 - _barMeter.fillAmount;
+                }
+                if (_volume.profile.TryGet<Vignette>(out Vignette vig))
+                {
+                    vig.intensity.value = 0.3f - _barMeter.fillAmount * 0.1f;
+                }
             }
         }
 
@@ -56,6 +69,15 @@ namespace _SCRIPTS.UI
         {
             _barMeter.fillAmount = 1;
             _barMeter.color = gradient.Evaluate(1);
+            
+            if (_volume.profile.TryGet<ChromaticAberration>(out ChromaticAberration ca))
+            {
+                ca.intensity.value = 0;
+            }
+            if (_volume.profile.TryGet<Vignette>(out Vignette vig))
+            {
+                vig.intensity.value = 0.2f;
+            }
         }
     
         #endregion
