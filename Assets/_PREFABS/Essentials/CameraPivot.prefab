@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d169cd2f045094a85ef604365adbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reduceSoul: 0.3
+  reduceSoul: 0.25
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0.2939663, a: 1}
@@ -208,7 +208,6 @@ GameObject:
   - component: {fileID: 2712065444432124784}
   - component: {fileID: 1619997856224065094}
   - component: {fileID: 2969851053370486529}
-  - component: {fileID: 205508977983064136}
   - component: {fileID: 1138835908065283174}
   m_Layer: 5
   m_Name: ScoreText
@@ -265,7 +264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 36541!
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3944eaaf70beffa4097d8c293604125e, type: 2}
   m_sharedMaterial: {fileID: 7159369417392969216, guid: 3944eaaf70beffa4097d8c293604125e,
@@ -348,7 +347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks:
-  - {fileID: 205508977983064136}
   - {fileID: 1138835908065283174}
   InitializationMode: 2
   AutoInitialization: 1
@@ -425,79 +423,6 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   DebugActive: 0
---- !u!114 &205508977983064136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4579381028646853560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5796eee3c7e7644e9d0c99e1174eeeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Active: 0
-  Label: RectTransformSizeDelta
-  Chance: 100
-  Timing:
-    TimescaleMode: 0
-    ExcludeFromHoldingPauses: 0
-    ContributeToTotalDuration: 1
-    InitialDelay: 0
-    CooldownDuration: 0
-    InterruptsOnStop: 1
-    NumberOfRepeats: 0
-    RepeatForever: 0
-    DelayBetweenRepeats: 1
-    MMFeedbacksDirectionCondition: 0
-    PlayDirection: 0
-    ConstantIntensity: 0
-    UseIntensityInterval: 0
-    IntensityIntervalMin: 0
-    IntensityIntervalMax: 0
-    Sequence: {fileID: 0}
-    TrackID: 0
-    Quantized: 0
-    TargetBPM: 120
-  DebugActive: 0
-  Mode: 0
-  Duration: 0.2
-  StartsOff: 0
-  RelativeValues: 1
-  AllowAdditivePlays: 0
-  DisableOnStop: 0
-  TargetRectTransform: {fileID: 352300840493391584}
-  SpeedCurve:
-    MMTweenDefinitionType: 1
-    MMTweenCurve: 4
-    Curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    Initialized: 0
-  RemapZero: {x: 0, y: 0}
-  RemapOne: {x: 1, y: 1}
 --- !u!114 &1138835908065283174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1571,7 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1619997856224065094}
-  scoreFb: {fileID: 0}
+  scoreFb: {fileID: 2969851053370486529}
 --- !u!1 &8580042781115051409
 GameObject:
   m_ObjectHideFlags: 0

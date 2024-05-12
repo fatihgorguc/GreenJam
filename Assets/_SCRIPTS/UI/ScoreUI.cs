@@ -33,7 +33,7 @@ namespace _SCRIPTS.UI
         {
             int killValue = Random.Range(50, 150);
             _score += killValue;
-            scoreText.text = _score+"!";
+            scoreText.text = _score.ToString();
             scoreFb.PlayFeedbacks();
         }
 
