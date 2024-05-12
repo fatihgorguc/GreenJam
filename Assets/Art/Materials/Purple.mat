@@ -31,7 +31,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _SpecularEnabled: 1
     m_Colors:
     - _BaseColor: {r: 0.45706585, g: 0.28764686, b: 0.6037736, a: 1}
     - _ColorDim: {r: 0.28599408, g: 0.12348701, b: 0.3490566, a: 1}
