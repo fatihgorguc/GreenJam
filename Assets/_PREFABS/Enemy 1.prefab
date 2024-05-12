@@ -537,8 +537,8 @@ MonoBehaviour:
   TargetAudioSource: {fileID: 6600283124022659019}
   Mode: 0
   RandomSfx: []
-  MinVolume: 1
-  MaxVolume: 1
+  MinVolume: 1.5
+  MaxVolume: 1.5
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: 0}

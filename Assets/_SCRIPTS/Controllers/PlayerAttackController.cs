@@ -27,6 +27,11 @@ namespace _SCRIPTS.Controllers
             CoreGameSignals.Instance.OnIncreaseKillCount += OnIncreaseKillCount;
         }
 
+        private void Start()
+        {
+            Time.timeScale = 1;
+        }
+
 
         void Update()
         {

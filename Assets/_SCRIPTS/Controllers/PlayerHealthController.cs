@@ -1,13 +1,17 @@
 using System;
+using System.Collections;
 using _SCRIPTS.Signals;
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _SCRIPTS.Controllers
 {
     public class PlayerHealthController : MonoBehaviour
     {
         [SerializeField] private MMFeedbacks dieFb;
+
+        private bool _isDead;
 
         private void OnEnable()
         {
@@ -37,7 +41,18 @@ namespace _SCRIPTS.Controllers
 
         private void Die()
         {
+            if (_isDead) return;
+            _isDead = true;
+            Time.timeScale = 0.2f;
             dieFb.PlayFeedbacks();
+            StartCoroutine(Restart());
+        }
+
+        IEnumerator Restart()
+        {
+            yield return new WaitForSecondsRealtime(3);
+            Debug.Log("bum");
+            SceneManager.LoadScene("Final");
         }
     }
 }
