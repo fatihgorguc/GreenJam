@@ -779,10 +779,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   damping: 5
-  attackRange: 5
+  attackRange: 30
   dartSpeed: 5
   attackFb: {fileID: 5680286824923317603}
-  dieFb: {fileID: 0}
+  dieFb: {fileID: 3263137105506096155}
   dartPrefab: {fileID: 8971788630802026915, guid: c9789c3f330dbd54495d5d8b734fc14e,
     type: 3}
 --- !u!1001 &968950212909693143
