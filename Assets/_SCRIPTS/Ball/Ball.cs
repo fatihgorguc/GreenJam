@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using _SCRIPTS.Enemy;
 using _SCRIPTS.Signals;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace _SCRIPTS.Ball
         private GameObject _model;
         private Rigidbody _rigidbody;
         [SerializeField] private int desiredSpeed;
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -20,15 +22,15 @@ namespace _SCRIPTS.Ball
 
         private void Start()
         {
-            _rigidbody.AddForce(transform.forward.normalized*ballSpeed,ForceMode.Impulse);
+            _rigidbody.AddForce(transform.forward.normalized * ballSpeed, ForceMode.Impulse);
         }
 
-        
+
         private async Task CanDashAsync()
         {
             await Task.Delay(200);
         }
-        
+
         void Update()
         {
             SetModelTowardsVelocity();
@@ -48,15 +50,23 @@ namespace _SCRIPTS.Ball
         {
             _model.transform.forward = _rigidbody.velocity.normalized;
         }
-        
+
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag("Enemy"))
             {
-                
+
                 CoreGameSignals.Instance.OnIncreaseKillCount.Invoke();
                 Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
-                Destroy(collision.gameObject,0.2f);
+                collision.gameObject.GetComponent<Enemy.Enemy>().Die();
+            }
+
+            if (collision.gameObject.CompareTag("Enemy1"))
+            {
+
+                CoreGameSignals.Instance.OnIncreaseKillCount.Invoke();
+                Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
+                collision.gameObject.GetComponent<EnemyRanged>().Die();
             }
         }
     }

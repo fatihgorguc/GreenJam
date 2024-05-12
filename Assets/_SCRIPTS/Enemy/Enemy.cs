@@ -3,6 +3,7 @@ using _SCRIPTS.Controllers;
 using _SCRIPTS.Signals;
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace _SCRIPTS.Enemy
 {
@@ -12,26 +13,24 @@ namespace _SCRIPTS.Enemy
         [SerializeField] private float damping = 5;
         [SerializeField] private MMFeedbacks dieFb;
         
-        private PlayerMovementController _player;
+        private Transform _player;
         private Vector3 _targetPosition;
+        private NavMeshAgent _agent;
         
         private void Awake()
         {
-            _player = FindObjectOfType<PlayerMovementController>();
+            _player = FindObjectOfType<PlayerMovementController>().transform;
+            _agent = GetComponent<NavMeshAgent>();
         }
-        
+
+
         private void Update()
         {
-            FollowTarget();
+            _agent.destination = _player.position;
         }
 
-        private void FollowTarget()
-        {
-            _targetPosition = Vector3.Lerp(_targetPosition, _player.transform.position, damping * Time.deltaTime);
-            transform.position += (_targetPosition - transform.position).normalized * (moveSpeed * Time.deltaTime);
-        }
-
-        private void Die()
+        
+        public void Die()
         {
             dieFb.PlayFeedbacks();
             Destroy(gameObject,1f);

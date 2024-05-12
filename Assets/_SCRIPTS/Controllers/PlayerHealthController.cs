@@ -10,6 +10,10 @@ namespace _SCRIPTS.Controllers
             {
                 Time.timeScale = 0;
             }
+            if (other.gameObject.CompareTag("Dart"))
+            {
+                Time.timeScale = 0;
+            }
         }
     }
 }

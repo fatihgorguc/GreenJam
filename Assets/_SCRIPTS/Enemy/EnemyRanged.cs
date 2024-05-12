@@ -2,6 +2,7 @@ using System;
 using _SCRIPTS.Controllers;
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace _SCRIPTS.Enemy
 {
@@ -9,57 +10,53 @@ namespace _SCRIPTS.Enemy
     {
         [SerializeField] private float moveSpeed = 5;
         [SerializeField] private float damping = 5;
-        [SerializeField] private float attackRange = 5;
+        [SerializeField] private float attackRange = 18;
         [SerializeField] private float dartSpeed = 5;
         [SerializeField] private MMFeedbacks attackFb;
         [SerializeField] private MMFeedbacks dieFb;
         [SerializeField] private GameObject dartPrefab;
+        private NavMeshAgent _agent;
 
-        private bool _isAttacking;
+        private bool _isAttacking = false;
         
-        private PlayerMovementController _player;
+        private Transform _player;
         private Vector3 _targetPosition;
         
         private void Awake()
         {
-            _player = FindObjectOfType<PlayerMovementController>();
+            _player = FindObjectOfType<PlayerMovementController>().transform;
+            _agent = GetComponent<NavMeshAgent>();
         }
         
         private void Update()
         {
-            ChooseAction();
-            FollowTarget();
+            
+            Attack();
+            _agent.destination = _player.position;
         }
 
-        private void ChooseAction()
-        {
-            if (_isAttacking) return;
-            if (CheckDistance() < attackRange) Attack();
-            else FollowTarget();
-        }
+        
 
         private void Attack()
         {
-            _isAttacking = true;
-            attackFb.PlayFeedbacks();
-            
+            if (CheckDistance()<attackRange && !_isAttacking)
+            {
+                _isAttacking = true;
+                attackFb.PlayFeedbacks();
+            }
+              
         }
-
+        
         private float CheckDistance()
         {
             return Vector3.Distance(_player.transform.position, transform.position);
         }
 
-        private void FollowTarget()
-        {
-            _targetPosition = Vector3.Lerp(_targetPosition, _player.transform.position, damping * Time.deltaTime);
-            transform.position += (_targetPosition - transform.position).normalized * (moveSpeed * Time.deltaTime);
-        }
-
         private void InstantiateDart()
         {
-            var clone = Instantiate(dartPrefab, transform.position, transform.rotation);
-            clone.GetComponent<Rigidbody>().AddForce(transform.forward * dartSpeed, ForceMode.Impulse);
+            var clone = Instantiate(dartPrefab, new Vector3(transform.position.x,transform.position.y +1,transform.position.z), transform.rotation);
+            clone.GetComponent<Rigidbody>().AddForce((_player.transform.position - transform.position) * dartSpeed, ForceMode.Impulse);
+            clone.transform.forward = _player.transform.position - transform.position;
         }
         
         private void SetIsAttackingFalse()
@@ -67,7 +64,7 @@ namespace _SCRIPTS.Enemy
             _isAttacking = false;
         }
 
-        private void Die()
+        public void Die()
         {
             dieFb.PlayFeedbacks();
             Destroy(gameObject,1f);
