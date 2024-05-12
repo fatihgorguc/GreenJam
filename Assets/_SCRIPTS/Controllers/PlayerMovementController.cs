@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using _SCRIPTS.Enums;
 using _SCRIPTS.Signals;
+using MoreMountains.Feedbacks;
 using Unity.VisualScripting;
 using UnityEngine;
 using FixedUpdate = UnityEngine.PlayerLoop.FixedUpdate;
@@ -14,6 +15,7 @@ namespace _SCRIPTS.Controllers
         [SerializeField] private UnityEngine.Camera mainCamera;
         [SerializeField] private int speed;
         [SerializeField] private int dashSpeed;
+        [SerializeField] private MMFeedbacks dashFb;
         
         private float _horizontalMovement;
         private float _verticalMovement;
@@ -88,6 +90,7 @@ namespace _SCRIPTS.Controllers
             _canDash = false;
             _canMove = false;
             _rigidbody.AddForce(_movementDirection.normalized*dashSpeed,ForceMode.Impulse);
+            dashFb.PlayFeedbacks();
             CanDashAsync();
             
         }
