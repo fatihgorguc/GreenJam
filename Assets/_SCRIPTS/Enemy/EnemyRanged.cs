@@ -34,6 +34,11 @@ namespace _SCRIPTS.Enemy
             
             Attack();
             _agent.destination = _player.position;
+            if (_isAttacking)
+            {
+                transform.rotation = Quaternion.LookRotation(_player.position-transform.position,transform.up);
+            }
+            
         }
 
         
