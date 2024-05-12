@@ -53,6 +53,10 @@ namespace _SCRIPTS.UI
             if (!CoreGameSignals.Instance.OnGetCanAttack.Invoke())
             {
                 _barMeter.fillAmount -= reduceSoul * Time.deltaTime;
+                if (_barMeter.fillAmount ==0)
+                {
+                    CoreGameSignals.Instance.Die?.Invoke();
+                }
                 _barMeter.color = gradient.Evaluate(_barMeter.fillAmount);
                 if (_volume.profile.TryGet<ChromaticAberration>(out ChromaticAberration ca))
                 {
