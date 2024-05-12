@@ -25,7 +25,7 @@ namespace _SCRIPTS.Controllers
             {
                 Die();
             }
-            if (other.gameObject.CompareTag("Enemy2"))
+            if (other.gameObject.CompareTag("Enemy1"))
             {
                 Die();
             }

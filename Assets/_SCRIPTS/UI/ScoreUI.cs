@@ -1,5 +1,6 @@
 using System;
 using _SCRIPTS.Signals;
+using MoreMountains.Feedbacks;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,9 +11,15 @@ namespace _SCRIPTS.UI
     {
         private int _score;
         [SerializeField] private TextMeshProUGUI scoreText;
+        [SerializeField] private MMFeedbacks scoreFb;
         private void OnEnable()
         {
             SubscribeEvents();
+        }
+
+        private void Start()
+        {
+            scoreText.text = _score.ToString();
         }
 
         private void SubscribeEvents()
@@ -27,6 +34,7 @@ namespace _SCRIPTS.UI
             int killValue = Random.Range(50, 150);
             _score += killValue;
             scoreText.text = _score+"!";
+            scoreFb.PlayFeedbacks();
         }
 
         private int OnGetScore()

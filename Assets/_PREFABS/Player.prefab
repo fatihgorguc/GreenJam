@@ -40,7 +40,7 @@ Transform:
   - {fileID: 7057875270701124963}
   - {fileID: 7443947047505816931}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2436449654499389044
 Rigidbody:
@@ -240,10 +240,10 @@ GameObject:
   - component: {fileID: 6542310550647756588}
   - component: {fileID: 4887192113940462388}
   - component: {fileID: 4730221878471758213}
-  - component: {fileID: 4037782505391656475}
   - component: {fileID: 5608172135068476451}
   - component: {fileID: 8014618131068435729}
   - component: {fileID: 3986943628148946396}
+  - component: {fileID: 6217669234909720104}
   m_Layer: 0
   m_Name: DieFB
   m_TagString: Untagged
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks:
-  - {fileID: 4037782505391656475}
+  - {fileID: 6217669234909720104}
   - {fileID: 4887192113940462388}
   - {fileID: 4730221878471758213}
   - {fileID: 5608172135068476451}
@@ -453,48 +453,6 @@ MonoBehaviour:
   NestParticles: 1
   ApplyRotation: 1
   ApplyScale: 0
---- !u!114 &4037782505391656475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177367214378259294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3e1ec70856fe5439234683b34b4737, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Active: 1
-  Label: Timescale Modifier
-  Chance: 100
-  Timing:
-    TimescaleMode: 0
-    ExcludeFromHoldingPauses: 0
-    ContributeToTotalDuration: 1
-    InitialDelay: 0
-    CooldownDuration: 0
-    InterruptsOnStop: 1
-    NumberOfRepeats: 0
-    RepeatForever: 0
-    DelayBetweenRepeats: 1
-    MMFeedbacksDirectionCondition: 0
-    PlayDirection: 0
-    ConstantIntensity: 0
-    UseIntensityInterval: 0
-    IntensityIntervalMin: 0
-    IntensityIntervalMax: 0
-    Sequence: {fileID: 0}
-    TrackID: 0
-    Quantized: 0
-    TargetBPM: 120
-  DebugActive: 0
-  Mode: 1
-  TimeScale: 0.5
-  TimeScaleDuration: 0.3
-  TimeScaleLerp: 0
-  TimeScaleLerpSpeed: 1
-  ResetTimescaleOnStop: 0
 --- !u!114 &5608172135068476451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d958a52145b19904aa2a5bcb3849eafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Active: 1
+  Active: 0
   Label: Scale
   Chance: 100
   Timing:
@@ -783,6 +741,48 @@ MonoBehaviour:
   MinPitch: 1
   MaxPitch: 1
   SfxAudioMixerGroup: {fileID: 0}
+--- !u!114 &6217669234909720104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177367214378259294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3e1ec70856fe5439234683b34b4737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Timescale Modifier
+  Chance: 100
+  Timing:
+    TimescaleMode: 1
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  Mode: 1
+  TimeScale: 0
+  TimeScaleDuration: 1
+  TimeScaleLerp: 1
+  TimeScaleLerpSpeed: 1
+  ResetTimescaleOnStop: 0
 --- !u!1 &1197250675807043123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,6 +3145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906216857ebb7e54488e2e994f0aa458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieFb: {fileID: 6542310550647756588}
 --- !u!1001 &3548062627666177876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3207,6 +3208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871923947533817399, guid: 9ad3f1514d1b1834994dd0973e01aa1b,
+        type: 3}
+      propertyPath: VelocityModule.inWorldSpace
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8370428521012642556, guid: 9ad3f1514d1b1834994dd0973e01aa1b,
         type: 3}

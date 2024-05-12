@@ -63,6 +63,7 @@ namespace _SCRIPTS.Ball
                 CoreGameSignals.Instance.OnIncreaseKillCount.Invoke();
                 Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
                 collision.gameObject.GetComponent<Enemy.Enemy>().Die();
+                CoreGameSignals.Instance.OnScoreManagement?.Invoke();
             }
 
             if (collision.gameObject.CompareTag("Enemy1"))
@@ -71,6 +72,7 @@ namespace _SCRIPTS.Ball
                 CoreGameSignals.Instance.OnIncreaseKillCount.Invoke();
                 Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
                 collision.gameObject.GetComponent<EnemyRanged>().Die();
+                CoreGameSignals.Instance.OnScoreManagement?.Invoke();
             }
         }
     }

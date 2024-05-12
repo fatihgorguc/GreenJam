@@ -15,6 +15,7 @@ namespace _SCRIPTS.UI
 
         private Volume _volume;
         private Image _barMeter;
+        private bool isDead = false;
         
         #region Update
 
@@ -53,8 +54,9 @@ namespace _SCRIPTS.UI
             if (!CoreGameSignals.Instance.OnGetCanAttack.Invoke())
             {
                 _barMeter.fillAmount -= reduceSoul * Time.deltaTime;
-                if (_barMeter.fillAmount ==0)
+                if (_barMeter.fillAmount ==0 && !isDead)
                 {
+                    isDead = true;
                     CoreGameSignals.Instance.Die?.Invoke();
                 }
                 _barMeter.color = gradient.Evaluate(_barMeter.fillAmount);
