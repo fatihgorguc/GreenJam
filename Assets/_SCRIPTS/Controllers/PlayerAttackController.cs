@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using _SCRIPTS.Signals;
 using MoreMountains.Feedbacks;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace _SCRIPTS.Controllers
         [SerializeField] private MMFeedbacks catchFb;
         private bool _canAttack = true;
         private int _killCount;
+        
+        //private Coroutine _exitRoutine;
 
         private void OnEnable()
         {
@@ -47,9 +50,12 @@ namespace _SCRIPTS.Controllers
             if (_canAttack)
             {
                 _canAttack = false;
+                CoreGameSignals.Instance.OnSetIsExitFalse.Invoke();
+                //if (_exitRoutine != null) StopCoroutine(_exitRoutine);
                 Instantiate(Resources.Load<GameObject>("Ball"),
                     attackPoint.position,attackPoint.rotation);
                 shootFb.PlayFeedbacks();
+                //_exitRoutine = StartCoroutine(SetIsExitTrue());
             }
         }
 
@@ -74,6 +80,11 @@ namespace _SCRIPTS.Controllers
             _killCount++;
         }
 
+        IEnumerator SetIsExitTrue()
+        {
+            yield return new WaitForSeconds(0.5f);
+            CoreGameSignals.Instance.OnSetIsExitTrue.Invoke();
+        }
         
     }
 }

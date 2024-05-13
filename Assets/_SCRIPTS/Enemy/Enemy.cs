@@ -33,7 +33,6 @@ namespace _SCRIPTS.Enemy
         public void Die()
         {
             dieFb.PlayFeedbacks();
-            Destroy(gameObject,1f);
         }
         
     }

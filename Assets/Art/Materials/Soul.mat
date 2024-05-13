@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Soul
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
-  m_Parent: {fileID: 2100000, guid: fc89d22c0e46e1843971c5fcc09d1df3, type: 2}
+  m_Parent: {fileID: 2100000, guid: b5245a79b39850a45ba9756759d9ecae, type: 2}
   m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - DR_CEL_EXTRA_ON

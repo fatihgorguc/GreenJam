@@ -74,6 +74,8 @@ namespace _SCRIPTS.Ball
                 collision.gameObject.GetComponent<EnemyRanged>().Die();
                 CoreGameSignals.Instance.OnScoreManagement?.Invoke();
             }
+            
+            CoreGameSignals.Instance.OnSetIsExitTrue.Invoke();
         }
     }
 }

@@ -58,12 +58,13 @@ namespace _SCRIPTS.Controllers
                 _horizontalMovement = Input.GetAxis("Horizontal"); 
                 _verticalMovement = Input.GetAxis("Vertical"); 
             }
-                _movementDirection = new Vector3(_horizontalMovement, 0f, _verticalMovement).normalized;
-                Quaternion rotation = Quaternion.Euler(0f, _rotationAngle, 0f);
-                _movementDirection = rotation * _movementDirection;
-                Vector3 velocity = _movementDirection;
-        
-                transform.position += velocity * speed * Time.deltaTime;
+            _movementDirection = new Vector3(_horizontalMovement, 0f, _verticalMovement).normalized;
+            Quaternion rotation = Quaternion.Euler(0f, _rotationAngle, 0f);
+            _movementDirection = rotation * _movementDirection;
+            Vector3 velocity = _movementDirection;
+            Debug.Log(velocity);
+            
+            transform.position += velocity * (speed * Time.deltaTime);
             
         }
 

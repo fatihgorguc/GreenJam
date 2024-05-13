@@ -31,14 +31,12 @@ namespace _SCRIPTS.Enemy
                 yield return new WaitForSeconds(randomSpawnTime);
                 var randomSpawnPoint = Random.Range(0, 9);
                 var RandomEnemyType = Random.Range(0, 6);
-                Debug.LogWarning(spawnPoints[randomSpawnPoint].position);
                 while(true)
                 {
                     if (spawnPoints[randomSpawnPoint].position.x > 83 || spawnPoints[randomSpawnPoint].position.x < -70 ||
                         spawnPoints[randomSpawnPoint].position.z > 56 || spawnPoints[randomSpawnPoint].position.z < -56)
                     {
                         randomSpawnPoint = Random.Range(0, 9);
-                        Debug.LogWarning("  Tekrar");
                     }
                     else
                     {
@@ -54,7 +52,6 @@ namespace _SCRIPTS.Enemy
                 var randomSpawnTime = Random.Range(MinRate(difficultyLevel), MaxRate(difficultyLevel));
                 yield return new WaitForSeconds(randomSpawnTime);
                 var randomSpawnPoint = Random.Range(0, 9);
-                Debug.LogWarning(spawnPoints[randomSpawnPoint].position);
                 var RandomEnemyType = Random.Range(0, 6);
                 while(true)
                 {
@@ -62,7 +59,6 @@ namespace _SCRIPTS.Enemy
                         spawnPoints[randomSpawnPoint].position.z > 56 || spawnPoints[randomSpawnPoint].position.z < -56)
                     {
                         randomSpawnPoint = Random.Range(0, 9);
-                        Debug.LogWarning("  Tekrar");
                     }
                     else
                     {
