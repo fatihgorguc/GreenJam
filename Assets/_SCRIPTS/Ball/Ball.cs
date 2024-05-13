@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using _SCRIPTS.Enemy;
 using _SCRIPTS.Signals;
 using MoreMountains.Feedbacks;
@@ -27,13 +25,7 @@ namespace _SCRIPTS.Ball
         {
             _rigidbody.AddForce(transform.forward.normalized * ballSpeed, ForceMode.Impulse);
         }
-
-
-        private async Task CanDashAsync()
-        {
-            await Task.Delay(200);
-        }
-
+        
         void Update()
         {
             SetModelTowardsVelocity();

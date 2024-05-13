@@ -1,12 +1,7 @@
-using System;
 using System.Collections;
-using System.Threading.Tasks;
-using _SCRIPTS.Enums;
 using _SCRIPTS.Signals;
 using MoreMountains.Feedbacks;
-using Unity.VisualScripting;
 using UnityEngine;
-using FixedUpdate = UnityEngine.PlayerLoop.FixedUpdate;
 
 namespace _SCRIPTS.Controllers
 {

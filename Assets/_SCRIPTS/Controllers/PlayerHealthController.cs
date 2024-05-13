@@ -51,7 +51,6 @@ namespace _SCRIPTS.Controllers
         IEnumerator Restart()
         {
             yield return new WaitForSecondsRealtime(3);
-            Debug.Log("bum");
             SceneManager.LoadScene("Final");
         }
     }
