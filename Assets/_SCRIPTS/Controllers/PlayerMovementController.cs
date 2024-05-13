@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using _SCRIPTS.Enums;
 using _SCRIPTS.Signals;
@@ -91,16 +92,14 @@ namespace _SCRIPTS.Controllers
             _canMove = false;
             _rigidbody.AddForce(_movementDirection.normalized*dashSpeed,ForceMode.Impulse);
             dashFb.PlayFeedbacks();
-            CanDashAsync();
-            
+            StartCoroutine(DashCooldown());
         }
         
-        private async Task CanDashAsync()
+        IEnumerator DashCooldown()
         {
-            await Task.Delay(400);
+            yield return new WaitForSeconds(0.4f);
             _canMove = true;
             _canDash = true;
-            Debug.Log(_canDash);
         }
 
         private Vector3 OnGetMovementDirection()
