@@ -1,5 +1,6 @@
 using System;
 using _SCRIPTS.Signals;
+using MoreMountains.Feedbacks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -12,6 +13,7 @@ namespace _SCRIPTS.UI
     {
         [SerializeField] private float reduceSoul;
         [SerializeField] private Gradient gradient;
+        [SerializeField] private MMFeedbacks dieFb;
 
         private Volume _volume;
         private Image _barMeter;
@@ -58,6 +60,7 @@ namespace _SCRIPTS.UI
                 {
                     isDead = true;
                     CoreGameSignals.Instance.Die?.Invoke();
+                    dieFb.PlayFeedbacks();
                 }
                 _barMeter.color = gradient.Evaluate(_barMeter.fillAmount);
                 if (_volume.profile.TryGet<ChromaticAberration>(out ChromaticAberration ca))

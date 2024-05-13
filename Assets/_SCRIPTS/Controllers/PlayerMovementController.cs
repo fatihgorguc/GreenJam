@@ -24,7 +24,7 @@ namespace _SCRIPTS.Controllers
         private bool _canMove = true;
         private bool _canDash = true;
         private Rigidbody _rigidbody;
-        private Vector3 lookAtPos;
+        public Vector3 lookAtPos;
 
         private void Awake()
         {
