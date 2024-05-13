@@ -62,7 +62,6 @@ namespace _SCRIPTS.Controllers
             Quaternion rotation = Quaternion.Euler(0f, _rotationAngle, 0f);
             _movementDirection = rotation * _movementDirection;
             Vector3 velocity = _movementDirection;
-            Debug.Log(velocity);
             
             transform.position += velocity * (speed * Time.deltaTime);
             
