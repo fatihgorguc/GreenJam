@@ -48,7 +48,8 @@ namespace _SCRIPTS.UI
 
         private void SubscribeEvents()
         {
-            CoreGameSignals.Instance.OnIncreaseSoulMeter += ResetSoulMeter;
+            CoreGameSignals.Instance.OnResetSoulMeter += ResetSoulMeter;
+            CoreGameSignals.Instance.OnIncreaseSoulMeter += OnIncreaseSoulMeter;
         }
     
         private void ReduceBarMeter()
@@ -87,6 +88,16 @@ namespace _SCRIPTS.UI
             {
                 vig.intensity.value = 0.2f;
             }
+        }
+
+        private void OnIncreaseSoulMeter(float val)
+        {
+            _barMeter.fillAmount += val;
+            if (_barMeter.fillAmount >=1)
+            {
+                _barMeter.fillAmount = 1;
+            }
+            
         }
     
         #endregion

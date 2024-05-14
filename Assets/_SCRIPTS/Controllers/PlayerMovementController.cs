@@ -92,8 +92,9 @@ namespace _SCRIPTS.Controllers
         
         IEnumerator DashCooldown()
         {
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.2f);
             _canMove = true;
+            yield return new WaitForSeconds(0.2f);
             _canDash = true;
         }
 

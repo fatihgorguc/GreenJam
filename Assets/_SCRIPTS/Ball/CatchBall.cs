@@ -45,7 +45,7 @@ namespace _SCRIPTS.Ball
             Destroy(other.gameObject);
             _isExit = false;
             CoreGameSignals.Instance.OnSetGetAttack.Invoke();
-            CoreGameSignals.Instance.OnIncreaseSoulMeter.Invoke();
+            CoreGameSignals.Instance.OnResetSoulMeter.Invoke();
         }
 
         private void SetIsExitTrue()

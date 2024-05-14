@@ -56,6 +56,7 @@ namespace _SCRIPTS.Ball
                 Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
                 collision.gameObject.GetComponent<Enemy.Enemy>().Die();
                 CoreGameSignals.Instance.OnScoreManagement?.Invoke();
+                CoreGameSignals.Instance.OnIncreaseSoulMeter?.Invoke(0.1f);
             }
 
             if (collision.gameObject.CompareTag("Enemy1"))
@@ -65,6 +66,13 @@ namespace _SCRIPTS.Ball
                 Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
                 collision.gameObject.GetComponent<EnemyRanged>().Die();
                 CoreGameSignals.Instance.OnScoreManagement?.Invoke();
+                CoreGameSignals.Instance.OnIncreaseSoulMeter?.Invoke(0.1f);
+            }
+
+            if (!collision.gameObject.CompareTag("Enemy1") || !collision.gameObject.CompareTag("Enemy") ||
+                !collision.gameObject.CompareTag("Player"))
+            {
+                CoreGameSignals.Instance.OnIncreaseSoulMeter?.Invoke(0.1f);
             }
             
             CoreGameSignals.Instance.OnSetIsExitTrue.Invoke();
