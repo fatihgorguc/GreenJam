@@ -33,6 +33,7 @@ namespace _SCRIPTS.Controllers
             CoreGameSignals.Instance.OnGetCanAttack += OnGetCanAttack;
             CoreGameSignals.Instance.OnGetKillCount += OnGetKillCount;
             CoreGameSignals.Instance.OnIncreaseKillCount += OnIncreaseKillCount;
+            CoreGameSignals.Instance.OnAttack += OnAttack;
         }
 
         private void Start()
@@ -40,17 +41,7 @@ namespace _SCRIPTS.Controllers
             Time.timeScale = 1;
         }
 
-
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Attack();
-            }
-        
-        }
-
-        private void Attack()
+        private void OnAttack()
         {
             if (_canAttack)
             {
@@ -58,7 +49,7 @@ namespace _SCRIPTS.Controllers
                 CoreGameSignals.Instance.OnSetIsExitFalse.Invoke();
                 Quaternion rotation = Quaternion.LookRotation(_pmc.lookAtPos - transform.position, transform.up);
                 Instantiate(Resources.Load<GameObject>("Ball"),
-                    attackPoint.position, rotation);
+                    attackPoint.position, transform.rotation);
                 shootFb.PlayFeedbacks();
             }
         }

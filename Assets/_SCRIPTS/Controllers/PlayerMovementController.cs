@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using _SCRIPTS.Signals;
 using MoreMountains.Feedbacks;
@@ -12,6 +13,7 @@ namespace _SCRIPTS.Controllers
         [SerializeField] private int speed;
         [SerializeField] private int dashSpeed;
         [SerializeField] private MMFeedbacks dashFb;
+        [SerializeField] private Joystick joystick;
         
         private float _horizontalMovement;
         private float _verticalMovement;
@@ -25,46 +27,60 @@ namespace _SCRIPTS.Controllers
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _canMove = true;
         }
 
         private void OnEnable()
         {
-            
+            SubscribeEvents();
         }
 
         private void SubscribeEvents()
         {
             CoreGameSignals.Instance.OnGetMovementDirection += OnGetMovementDirection;
+            CoreGameSignals.Instance.OnDash += OnDash;
         }
 
         private void Update()
         {
             Movement();
-            LookRotation();
-            if (Input.GetKeyDown(KeyCode.Space) && _canDash)
-            {
-                Dash();
-            }
+            
         }
 
         private void Movement()
         {
             if (_canMove)
             {
-                _horizontalMovement = Input.GetAxis("Horizontal"); 
-                _verticalMovement = Input.GetAxis("Vertical"); 
+                _horizontalMovement = joystick.Horizontal;
+                _verticalMovement = joystick.Vertical;
+        
+                // Joystick girişlerini kontrol edin
+                Debug.Log($"Joystick Horizontal: {_horizontalMovement}, Vertical: {_verticalMovement}");
             }
+
             _movementDirection = new Vector3(_horizontalMovement, 0f, _verticalMovement).normalized;
             Quaternion rotation = Quaternion.Euler(0f, _rotationAngle, 0f);
             _movementDirection = rotation * _movementDirection;
-            Vector3 velocity = _movementDirection;
-            
-            transform.position += velocity * (speed * Time.deltaTime);
-            
+
+            Debug.Log($"Movement Direction: {_movementDirection}");
+
+            if (_movementDirection != Vector3.zero)
+            {
+                if (_movementDirection.magnitude >= 0.1f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(_movementDirection, Vector3.up);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                }
+            }
+
+            Vector3 velocity = _movementDirection * speed;
+            transform.position += velocity * Time.deltaTime;
+
         }
 
-        private void LookRotation()
+        /*private void LookRotation()
         {
+            
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
             float rayDistance;
@@ -79,15 +95,18 @@ namespace _SCRIPTS.Controllers
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
-        }
+        }*/
 
-        private void Dash()
+        private void OnDash()
         {
-            _canDash = false;
-            _canMove = false;
-            _rigidbody.AddForce(_movementDirection.normalized*dashSpeed,ForceMode.Impulse);
-            dashFb.PlayFeedbacks();
-            StartCoroutine(DashCooldown());
+            if (_canDash)
+            {
+                _canDash = false;
+                _canMove = false;
+                _rigidbody.AddForce(_movementDirection.normalized*dashSpeed,ForceMode.Impulse);
+                dashFb.PlayFeedbacks();
+                StartCoroutine(DashCooldown());
+            }
         }
         
         IEnumerator DashCooldown()
