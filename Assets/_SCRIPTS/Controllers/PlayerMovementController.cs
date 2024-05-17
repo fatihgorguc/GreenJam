@@ -41,7 +41,7 @@ namespace _SCRIPTS.Controllers
             CoreGameSignals.Instance.OnDash += OnDash;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             Movement();
             
@@ -58,7 +58,7 @@ namespace _SCRIPTS.Controllers
                 Debug.Log($"Joystick Horizontal: {_horizontalMovement}, Vertical: {_verticalMovement}");
             }
 
-            _movementDirection = new Vector3(_horizontalMovement, 0f, _verticalMovement).normalized;
+            _movementDirection = new Vector3(_horizontalMovement, 0f, _verticalMovement);
             Quaternion rotation = Quaternion.Euler(0f, _rotationAngle, 0f);
             _movementDirection = rotation * _movementDirection;
 
@@ -69,12 +69,12 @@ namespace _SCRIPTS.Controllers
                 if (_movementDirection.magnitude >= 0.1f)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(_movementDirection, Vector3.up);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
                 }
             }
 
             Vector3 velocity = _movementDirection * speed;
-            transform.position += velocity * Time.deltaTime;
+            transform.position += velocity * Time.fixedDeltaTime;
 
         }
 
