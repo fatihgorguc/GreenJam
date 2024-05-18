@@ -9,8 +9,6 @@ namespace _SCRIPTS.Enemy
 {
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 5;
-        [SerializeField] private float damping = 5;
         [SerializeField] private MMFeedbacks dieFb;
         
         private Transform _player;

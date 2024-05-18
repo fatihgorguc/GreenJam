@@ -9,49 +9,62 @@ namespace _SCRIPTS.Controllers
 {
     public class PlayerHealthController : MonoBehaviour
     {
+        #region Serialize Field
+
         [SerializeField] private MMFeedbacks dieFb;
+
+        #endregion
+
+        #region Private Field
 
         private bool _isDead;
 
+        #endregion
+
+        #region OnEnable, OnDisable
         private void OnEnable()
         {
             SubscribeEvents();
         }
 
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
+        #endregion
+
+        #region Functions
+
         private void SubscribeEvents()
         {
-            CoreGameSignals.Instance.Die += Die;
+            CoreGameSignals.Instance.OnDie += OnDie;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Enemy1") || other.gameObject.CompareTag("Dart"))
             {
-                Die();
-            }
-            if (other.gameObject.CompareTag("Enemy1"))
-            {
-                Die();
-            }
-            if (other.gameObject.CompareTag("Dart"))
-            {
-                Die();
+                OnDie();
             }
         }
 
-        private void Die()
+        private void OnDie()
         {
             if (_isDead) return;
             _isDead = true;
             Time.timeScale = 0.2f;
             dieFb.PlayFeedbacks();
-            StartCoroutine(Restart());
+            CoreGameSignals.Instance.OnRestart?.Invoke();
         }
 
-        IEnumerator Restart()
+        private void UnSubscribeEvents()
         {
-            yield return new WaitForSecondsRealtime(3);
-            SceneManager.LoadScene("Final");
+            CoreGameSignals.Instance.OnDie -= OnDie;
         }
+        
+        #endregion
+
+
     }
 }

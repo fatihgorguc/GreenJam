@@ -19,7 +19,7 @@ namespace _SCRIPTS.UI
         private Image _barMeter;
         private bool isDead = false;
         
-        #region Update
+        #region Awake, OnEnable, Start, Update, OnDisable
 
         private void Awake()
         {
@@ -41,7 +41,12 @@ namespace _SCRIPTS.UI
         {
             ReduceBarMeter();
         }
-    
+
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
         #endregion
             
         #region Private Functions
@@ -60,7 +65,7 @@ namespace _SCRIPTS.UI
                 if (_barMeter.fillAmount ==0 && !isDead)
                 {
                     isDead = true;
-                    CoreGameSignals.Instance.Die?.Invoke();
+                    CoreGameSignals.Instance.OnDie?.Invoke();
                     dieFb.PlayFeedbacks();
                 }
                 _barMeter.color = gradient.Evaluate(_barMeter.fillAmount);
@@ -97,7 +102,12 @@ namespace _SCRIPTS.UI
             {
                 _barMeter.fillAmount = 1;
             }
-            
+        }
+        
+        private void UnSubscribeEvents()
+        {
+            CoreGameSignals.Instance.OnResetSoulMeter -= ResetSoulMeter;
+            CoreGameSignals.Instance.OnIncreaseSoulMeter -= OnIncreaseSoulMeter;
         }
     
         #endregion

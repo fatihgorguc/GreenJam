@@ -13,12 +13,14 @@ namespace _SCRIPTS.Signals
         public UnityAction OnResetSoulMeter = delegate {  };
         public Func<int> OnGetKillCount = () => 0;
         public UnityAction OnIncreaseKillCount = delegate {  };
-        public UnityAction OnScoreManagement = delegate {  };
+        public UnityAction OnIncreaseScore = delegate {  };
         public UnityAction<float> OnIncreaseSoulMeter = delegate {  };
         public Func<int> OnGetScore = () => 0;
-        public UnityAction Die = delegate {  };
+        public UnityAction OnDie = delegate {  };
         public UnityAction OnAttack = delegate {  };
         public UnityAction OnDash = delegate {  };
+        public UnityAction OnRestart = delegate {  };
+        public UnityAction OnScoreUIManagement = delegate {  };
 
 
         public UnityAction OnSetGetAttack = delegate {  };

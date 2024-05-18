@@ -21,6 +21,7 @@ namespace _SCRIPTS.Handlers
 
         #endregion
 
+        #region Awake OnEnable
         private void Awake()
         {
             _button = GetComponent<Button>();
@@ -30,7 +31,9 @@ namespace _SCRIPTS.Handlers
         {
             SubscribeEvents();
         }
+        #endregion
 
+        #region Functions
         private void SubscribeEvents()
         {
             switch (buttonType)
@@ -43,5 +46,7 @@ namespace _SCRIPTS.Handlers
                     break;
             }
         }
+        #endregion
+
     }
 }

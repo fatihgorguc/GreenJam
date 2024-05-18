@@ -6,14 +6,34 @@ namespace _SCRIPTS.Ball
 {
     public class CatchBall : MonoBehaviour
     {
-        private bool _isExit = false;
+        #region Private Field
+        
+        private bool _isExit;
+        
+        #endregion
+
+        #region OnEnable
 
         private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
+        #endregion
+
+        #region Functions
+
+        private void SubscribeEvents()
         {
             CoreGameSignals.Instance.OnSetIsExitTrue += SetIsExitTrue;
             CoreGameSignals.Instance.OnSetIsExitFalse += SetIsExitFalse;
         }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Ball"))
@@ -57,5 +77,15 @@ namespace _SCRIPTS.Ball
         {
             _isExit = false;
         }
+        
+        private void UnSubscribeEvents()
+        {
+            CoreGameSignals.Instance.OnSetIsExitTrue -= SetIsExitTrue;
+            CoreGameSignals.Instance.OnSetIsExitFalse -= SetIsExitFalse;
+        }
+
+        #endregion
+
+
     }
 }

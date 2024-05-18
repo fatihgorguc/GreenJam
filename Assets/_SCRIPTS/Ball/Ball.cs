@@ -7,14 +7,23 @@ namespace _SCRIPTS.Ball
 {
     public class Ball : MonoBehaviour
     {
+        #region Serialize Field
+
         [SerializeField] private int ballSpeed;
+        [SerializeField] private int desiredSpeed;
+        [SerializeField] private MMFeedbacks bounceFb;
+
+        #endregion
+
+        #region Private Field
 
         private GameObject _model;
         private Rigidbody _rigidbody;
-        [SerializeField] private int desiredSpeed;
-        
-        [SerializeField] private MMFeedbacks bounceFb;
 
+        #endregion
+
+        #region Awake, Start, Update
+        
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -35,7 +44,11 @@ namespace _SCRIPTS.Ball
         {
             ConstantVelocity();
         }
+        
+        #endregion
 
+        #region Functions
+        
         private void ConstantVelocity()
         {
             _rigidbody.velocity = _rigidbody.velocity.normalized * desiredSpeed;
@@ -49,33 +62,25 @@ namespace _SCRIPTS.Ball
         private void OnCollisionEnter(Collision collision)
         {
             bounceFb.PlayFeedbacks();
-            if (collision.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Enemy1"))
             {
 
                 CoreGameSignals.Instance.OnIncreaseKillCount.Invoke();
                 Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
                 collision.gameObject.GetComponent<Enemy.Enemy>().Die();
-                CoreGameSignals.Instance.OnScoreManagement?.Invoke();
+                CoreGameSignals.Instance.OnIncreaseScore?.Invoke();
                 CoreGameSignals.Instance.OnIncreaseSoulMeter?.Invoke(0.1f);
             }
-
-            if (collision.gameObject.CompareTag("Enemy1"))
-            {
-
-                CoreGameSignals.Instance.OnIncreaseKillCount.Invoke();
-                Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
-                collision.gameObject.GetComponent<EnemyRanged>().Die();
-                CoreGameSignals.Instance.OnScoreManagement?.Invoke();
-                CoreGameSignals.Instance.OnIncreaseSoulMeter?.Invoke(0.1f);
-            }
-
-            if (!collision.gameObject.CompareTag("Enemy1") || !collision.gameObject.CompareTag("Enemy") ||
-                !collision.gameObject.CompareTag("Player"))
+            else
             {
                 CoreGameSignals.Instance.OnIncreaseSoulMeter?.Invoke(0.1f);
             }
             
             CoreGameSignals.Instance.OnSetIsExitTrue.Invoke();
         }
+
+        #endregion
+
+
     }
 }

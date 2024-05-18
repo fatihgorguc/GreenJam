@@ -8,13 +8,17 @@ namespace _SCRIPTS.Enemy
 {
     public class EnemyRanged : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 5;
-        [SerializeField] private float damping = 5;
+        #region SerializedField
         [SerializeField] private float attackRange = 18;
         [SerializeField] private float dartSpeed = 5;
         [SerializeField] private MMFeedbacks attackFb;
         [SerializeField] private MMFeedbacks dieFb;
         [SerializeField] private GameObject dartPrefab;
+        
+        #endregion
+
+        #region Private Field
+
         private NavMeshAgent _agent;
 
         private bool _isAttacking = false;
@@ -23,26 +27,23 @@ namespace _SCRIPTS.Enemy
         private Transform _player;
         private Vector3 _targetPosition;
         
+        #endregion
+
+        #region Awake,Update
         private void Awake()
         {
             _player = FindObjectOfType<PlayerMovementController>().transform;
             _agent = GetComponent<NavMeshAgent>();
         }
-        
         private void Update()
         {
-            
             Attack();
-            _agent.destination = _player.position;
-            if (_isAttacking)
-            {
-                transform.rotation = Quaternion.LookRotation(_player.position-transform.position,transform.up);
-            }
-            
+            Movement();
         }
+        #endregion
 
+        #region Function
         
-
         private void Attack()
         {
             if (CheckDistance()<attackRange && !_isAttacking)
@@ -50,7 +51,15 @@ namespace _SCRIPTS.Enemy
                 _isAttacking = true;
                 attackFb.PlayFeedbacks();
             }
-              
+        }
+
+        private void Movement()
+        {
+            _agent.destination = _player.position;
+            if (_isAttacking)
+            {
+                transform.rotation = Quaternion.LookRotation(_player.position-transform.position,transform.up);
+            }
         }
         
         private float CheckDistance()
@@ -78,6 +87,9 @@ namespace _SCRIPTS.Enemy
             dieFb.PlayFeedbacks();
             Destroy(gameObject,1f);
         }
+        
+        #endregion
+        
         
     }
 }

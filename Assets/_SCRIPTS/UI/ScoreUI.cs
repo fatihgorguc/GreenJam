@@ -9,9 +9,14 @@ namespace _SCRIPTS.UI
 {
     public class ScoreUI : MonoBehaviour
     {
-        private int _score;
+        #region Serialize Field
+
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private MMFeedbacks scoreFb;
+        
+        #endregion
+
+        #region OnEnable, Start, OnDisable
         private void OnEnable()
         {
             SubscribeEvents();
@@ -19,27 +24,31 @@ namespace _SCRIPTS.UI
 
         private void Start()
         {
-            scoreText.text = _score.ToString();
+            scoreText.text = CoreGameSignals.Instance.OnGetScore?.Invoke().ToString();
         }
+
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
+        #endregion
 
         private void SubscribeEvents()
         {
-            CoreGameSignals.Instance.OnScoreManagement += OnScoreManagement;
-            CoreGameSignals.Instance.OnGetScore += OnGetScore;
+            CoreGameSignals.Instance.OnScoreUIManagement += OnScoreUIManagement;
         }
 
         
-        private void OnScoreManagement()
+        private void OnScoreUIManagement()
         {
-            int killValue = Random.Range(50, 150);
-            _score += killValue;
-            scoreText.text = _score.ToString();
+            scoreText.text = CoreGameSignals.Instance.OnGetScore?.Invoke().ToString();
             scoreFb.PlayFeedbacks();
         }
-
-        private int OnGetScore()
+        
+        private void UnSubscribeEvents()
         {
-            return _score;
+            CoreGameSignals.Instance.OnScoreUIManagement -= OnScoreUIManagement;
         }
     }
 }
