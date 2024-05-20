@@ -14,6 +14,7 @@ namespace _SCRIPTS.Enemy
         [SerializeField] private float attackRange = 18;
         [SerializeField] private float dartSpeed = 5;
         [SerializeField] private MMFeedbacks attackFb;
+        [SerializeField] private MMFeedbacks shootFb;
         [SerializeField] private MMFeedbacks dieFb;
         [SerializeField] private GameObject dartPrefab;
         
@@ -78,12 +79,13 @@ namespace _SCRIPTS.Enemy
                 //Instantiate(dartPrefab, new Vector3(transform.position.x,transform.position.y +1,transform.position.z), transform.rotation);
             clone.GetComponent<Rigidbody>().velocity = (_player.transform.position - transform.position).normalized * dartSpeed;
             clone.transform.forward = _player.transform.position - transform.position;
-            
+            shootFb.PlayFeedbacks();
         }
 
         private void SetIsAttackingFalse()
         {
             _isAttacking = false;
+            Debug.Log("false");
         }
 
         public void Die()
