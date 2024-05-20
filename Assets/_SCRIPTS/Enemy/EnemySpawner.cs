@@ -75,12 +75,12 @@ namespace _SCRIPTS.Enemy
 
             if (randomEnemyType ==0)
             {
-                _coreGameSignals.OnSpawnFromPool?.Invoke("Green Enemy", spawnPoints[randomSpawnPoint].position,
+                _coreGameSignals.OnSpawnFromPool?.Invoke("Ranged Enemy", spawnPoints[randomSpawnPoint].position,
                     spawnPoints[randomSpawnPoint].rotation);
             }
             else
             {
-                _coreGameSignals.OnSpawnFromPool?.Invoke("Ranged Enemy", spawnPoints[randomSpawnPoint].position,
+                _coreGameSignals.OnSpawnFromPool?.Invoke("Green Enemy", spawnPoints[randomSpawnPoint].position,
                     spawnPoints[randomSpawnPoint].rotation);
             }
         }

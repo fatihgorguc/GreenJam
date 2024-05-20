@@ -481,15 +481,15 @@ MonoBehaviour:
   - pooltag: Green Enemy
     prefab: {fileID: 5524476469145312309, guid: 6ca316d5438c4294fa0eaf3bc59a35ae,
       type: 3}
-    size: 20
+    size: 30
   - pooltag: Ranged Enemy
     prefab: {fileID: 7220805134493534991, guid: 6197a38e603172c48a5b7678ad684e60,
       type: 3}
-    size: 20
+    size: 30
   - pooltag: Dart
     prefab: {fileID: 8971788630802026915, guid: c9789c3f330dbd54495d5d8b734fc14e,
       type: 3}
-    size: 30
+    size: 40
 --- !u!4 &332268970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7398771404335532125, guid: 7ac1e070d79e38342b966721cd6d5e0c,
@@ -3974,6 +3974,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 2227523419185092599, guid: 7ac1e070d79e38342b966721cd6d5e0c,
+        type: 3}
+      propertyPath: spawnRateMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227523419185092599, guid: 7ac1e070d79e38342b966721cd6d5e0c,
+        type: 3}
+      propertyPath: spawnRateMin
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2436449654499389044, guid: 7ac1e070d79e38342b966721cd6d5e0c,
         type: 3}
       propertyPath: m_Constraints

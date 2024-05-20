@@ -68,9 +68,10 @@ namespace _SCRIPTS.ObjectPooler
             
             
             GameObject objectToSpawn = PoolDictionary[tag].Dequeue();
-            objectToSpawn.SetActive(true);
+            
             objectToSpawn.transform.position = position;
             objectToSpawn.transform.rotation = rotation;
+            objectToSpawn.SetActive(true);
             
             PoolDictionary[tag].Enqueue(objectToSpawn);
 
