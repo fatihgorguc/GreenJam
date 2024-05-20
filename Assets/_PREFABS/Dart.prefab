@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 8551192120944006471}
   - component: {fileID: -2366938874118469033}
   - component: {fileID: -3593101380725282249}
+  - component: {fileID: 6090226377565625015}
   m_Layer: 0
   m_Name: Dart
   m_TagString: Dart
@@ -433,3 +434,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6090226377565625015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971788630802026915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e48605e2364ad4987184accae2b314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

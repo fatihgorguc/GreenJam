@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using _SCRIPTS.Controllers;
+using _SCRIPTS.Signals;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.AI;
@@ -48,6 +50,7 @@ namespace _SCRIPTS.Enemy
         {
             if (CheckDistance()<attackRange && !_isAttacking)
             {
+                Debug.Log("Attack");
                 _isAttacking = true;
                 attackFb.PlayFeedbacks();
             }
@@ -70,12 +73,14 @@ namespace _SCRIPTS.Enemy
         private void InstantiateDart()
         {
             if (_isDead) return;
-            var clone = Instantiate(dartPrefab, new Vector3(transform.position.x,transform.position.y +1,transform.position.z), transform.rotation);
+            var clone = CoreGameSignals.Instance.OnSpawnFromPool?.Invoke("Dart",
+                new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
+                //Instantiate(dartPrefab, new Vector3(transform.position.x,transform.position.y +1,transform.position.z), transform.rotation);
             clone.GetComponent<Rigidbody>().velocity = (_player.transform.position - transform.position).normalized * dartSpeed;
             clone.transform.forward = _player.transform.position - transform.position;
-            Destroy(clone, 5f);
+            
         }
-        
+
         private void SetIsAttackingFalse()
         {
             _isAttacking = false;
@@ -85,7 +90,7 @@ namespace _SCRIPTS.Enemy
         {
             _isDead = true;
             dieFb.PlayFeedbacks();
-            Destroy(gameObject,1f);
+            gameObject.SetActive(false);
         }
         
         #endregion

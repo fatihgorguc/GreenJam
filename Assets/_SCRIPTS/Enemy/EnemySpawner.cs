@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using _SCRIPTS.Signals;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace _SCRIPTS.Enemy
     {
         #region Serialize Field
         [SerializeField] private Transform[] spawnPoints;
-        [SerializeField] private GameObject[] enemyTypes;
         
         [SerializeField] private float spawnRateMin = 1;
         [SerializeField] private float spawnRateMax = 5;
@@ -18,10 +18,17 @@ namespace _SCRIPTS.Enemy
         #region Private Field
 
         private float _currentSpawnRate;
+        private CoreGameSignals _coreGameSignals;
 
         #endregion
 
-        #region Start
+        #region Awake, Start
+
+        private void Awake()
+        {
+            _coreGameSignals = CoreGameSignals.Instance;
+        }
+
         private void Start()
         {
             StartCoroutine(SpawnRoutine());
@@ -52,7 +59,7 @@ namespace _SCRIPTS.Enemy
         private void Spawner()
         {
             var randomSpawnPoint = Random.Range(0, 9);
-            var randomEnemyType = Random.Range(0, 6);
+            var randomEnemyType = Random.Range(0, 3);
             while(true)
             {
                 if (spawnPoints[randomSpawnPoint].position.x > 83 || spawnPoints[randomSpawnPoint].position.x < -70 ||
@@ -65,8 +72,17 @@ namespace _SCRIPTS.Enemy
                     break;
                 }
             }
-            Instantiate(enemyTypes[randomEnemyType],
-                spawnPoints[randomSpawnPoint].position,spawnPoints[randomSpawnPoint].rotation);
+
+            if (randomEnemyType ==0)
+            {
+                _coreGameSignals.OnSpawnFromPool?.Invoke("Green Enemy", spawnPoints[randomSpawnPoint].position,
+                    spawnPoints[randomSpawnPoint].rotation);
+            }
+            else
+            {
+                _coreGameSignals.OnSpawnFromPool?.Invoke("Ranged Enemy", spawnPoints[randomSpawnPoint].position,
+                    spawnPoints[randomSpawnPoint].rotation);
+            }
         }
 
         private float MaxRate(int val)

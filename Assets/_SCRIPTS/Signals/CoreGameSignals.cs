@@ -26,5 +26,6 @@ namespace _SCRIPTS.Signals
         public UnityAction OnSetGetAttack = delegate {  };
         public UnityAction OnSetIsExitTrue = delegate {  };
         public UnityAction OnSetIsExitFalse = delegate {  };
+        public Func< string, Vector3, Quaternion, GameObject> OnSpawnFromPool = (o, s, arg3) => default;
     }
 }

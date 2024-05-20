@@ -9,7 +9,12 @@ namespace _SCRIPTS.Managers
 {
     public class GameManager : MonoBehaviour
     {
-        #region OnEnable, Start OnDisable
+        #region OnEnable, Start, OnDisable
+        
+        void Awake()
+        {
+            Application.targetFrameRate = 60;
+        }
 
         private void OnEnable()
         {
@@ -19,6 +24,7 @@ namespace _SCRIPTS.Managers
         private void Start()
         {
             Time.timeScale = 1;
+            
         }
 
         private void OnDisable()

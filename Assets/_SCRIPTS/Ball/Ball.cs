@@ -67,7 +67,15 @@ namespace _SCRIPTS.Ball
 
                 CoreGameSignals.Instance.OnIncreaseKillCount.Invoke();
                 Debug.LogWarning(CoreGameSignals.Instance.OnGetKillCount());
-                collision.gameObject.GetComponent<Enemy.Enemy>().Die();
+                var enemy =collision.gameObject.GetComponent<Enemy.Enemy>();
+                if (enemy != null)
+                {
+                    enemy.Die();
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<EnemyRanged>().Die();;
+                }
                 CoreGameSignals.Instance.OnIncreaseScore?.Invoke();
                 CoreGameSignals.Instance.OnIncreaseSoulMeter?.Invoke(0.1f);
             }

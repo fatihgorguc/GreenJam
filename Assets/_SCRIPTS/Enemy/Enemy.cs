@@ -31,6 +31,7 @@ namespace _SCRIPTS.Enemy
         public void Die()
         {
             dieFb.PlayFeedbacks();
+            gameObject.SetActive(false);
         }
         
     }
