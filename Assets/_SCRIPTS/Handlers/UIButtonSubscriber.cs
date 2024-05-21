@@ -44,6 +44,9 @@ namespace _SCRIPTS.Handlers
                 case ButtonTypes.Dash:
                     _button.onClick.AddListener(()=>CoreGameSignals.Instance.OnDash?.Invoke());
                     break;
+                case ButtonTypes.Retry:
+                    _button.onClick.AddListener(()=>CoreGameSignals.Instance.OnRetryGame?.Invoke());
+                    break;
             }
         }
         #endregion

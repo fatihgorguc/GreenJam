@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using _SCRIPTS.Controllers;
 using _SCRIPTS.Signals;
 using MoreMountains.Feedbacks;
@@ -16,7 +14,6 @@ namespace _SCRIPTS.Enemy
         [SerializeField] private MMFeedbacks attackFb;
         [SerializeField] private MMFeedbacks shootFb;
         [SerializeField] private MMFeedbacks dieFb;
-        [SerializeField] private GameObject dartPrefab;
         
         #endregion
 
@@ -24,8 +21,8 @@ namespace _SCRIPTS.Enemy
 
         private NavMeshAgent _agent;
 
-        private bool _isAttacking = false;
-        private bool _isDead = false;
+        private bool _isAttacking;
+        private bool _isDead;
         
         private Transform _player;
         private Vector3 _targetPosition;
@@ -62,7 +59,8 @@ namespace _SCRIPTS.Enemy
             _agent.destination = _player.position;
             if (_isAttacking)
             {
-                transform.rotation = Quaternion.LookRotation(_player.position-transform.position,transform.up);
+                var transform1 = transform;
+                transform.rotation = Quaternion.LookRotation(_player.position-transform1.position,transform1.up);
             }
         }
         
@@ -93,6 +91,7 @@ namespace _SCRIPTS.Enemy
             _isDead = true;
             dieFb.PlayFeedbacks();
             gameObject.SetActive(false);
+            GetComponent<CapsuleCollider>().enabled = true;
         }
         
         #endregion

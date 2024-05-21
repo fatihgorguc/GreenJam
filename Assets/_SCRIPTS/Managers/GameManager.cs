@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
+using _SCRIPTS.Enums;
 using _SCRIPTS.Signals;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 namespace _SCRIPTS.Managers
@@ -10,11 +9,6 @@ namespace _SCRIPTS.Managers
     public class GameManager : MonoBehaviour
     {
         #region OnEnable, Start, OnDisable
-        
-        void Awake()
-        {
-            Application.targetFrameRate = 60;
-        }
 
         private void OnEnable()
         {
@@ -37,23 +31,33 @@ namespace _SCRIPTS.Managers
 
         private void SubscribeEvents()
         {
-            CoreGameSignals.Instance.OnRestart += OnRestart;
+            CoreGameSignals.Instance.OnStopGame += OnStopGame;
+            CoreGameSignals.Instance.OnRetryGame += OnRetryGame;
         }
 
-        private void OnRestart()
+        private void OnStopGame()
         {
-            StartCoroutine(Restart());
+            StartCoroutine(StopGame());
         }
         
-        IEnumerator Restart()
+        IEnumerator StopGame()
         {
+            
             yield return new WaitForSecondsRealtime(3);
+            CoreGameSignals.Instance.OnCheckHighScore?.Invoke();
+            CoreGameSignals.Instance.OnUIManagement?.Invoke(UIStates.EndGamePanel);
+            Time.timeScale = 0;
+        }
+
+        private void OnRetryGame()
+        {
             SceneManager.LoadScene("Final");
         }
         
         private void UnSubscribeEvents()
         {
-            CoreGameSignals.Instance.OnRestart -= OnRestart;
+            CoreGameSignals.Instance.OnStopGame -= OnStopGame;
+            CoreGameSignals.Instance.OnRetryGame -= OnRetryGame;
         }
 
         #endregion

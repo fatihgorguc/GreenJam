@@ -19,7 +19,7 @@ namespace _SCRIPTS.Signals
         public UnityAction OnDie = delegate {  };
         public UnityAction OnAttack = delegate {  };
         public UnityAction OnDash = delegate {  };
-        public UnityAction OnRestart = delegate {  };
+        public UnityAction OnStopGame = delegate {  };
         public UnityAction OnScoreUIManagement = delegate {  };
 
 
@@ -27,5 +27,10 @@ namespace _SCRIPTS.Signals
         public UnityAction OnSetIsExitTrue = delegate {  };
         public UnityAction OnSetIsExitFalse = delegate {  };
         public Func< string, Vector3, Quaternion, GameObject> OnSpawnFromPool = (o, s, arg3) => default;
+        public UnityAction OnSaveHighestScore = delegate {  };
+        public Func<int> OnLoadHighestScore = () => 0;
+        public UnityAction OnCheckHighScore = delegate {  };
+        public UnityAction<UIStates> OnUIManagement = delegate {  };
+        public UnityAction OnRetryGame = delegate {  };
     }
 }

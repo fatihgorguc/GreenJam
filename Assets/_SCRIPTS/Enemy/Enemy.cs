@@ -32,6 +32,7 @@ namespace _SCRIPTS.Enemy
         {
             dieFb.PlayFeedbacks();
             gameObject.SetActive(false);
+            GetComponent<CapsuleCollider>().enabled = true;
         }
         
     }

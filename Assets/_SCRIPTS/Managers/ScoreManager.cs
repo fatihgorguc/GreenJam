@@ -12,7 +12,7 @@ namespace _SCRIPTS.Managers
 
         #endregion
 
-        #region OnEnable, Start, OnDisbale
+        #region OnEnable, Start, OnDisale
 
         private void OnEnable()
         {
@@ -37,6 +37,7 @@ namespace _SCRIPTS.Managers
         {
             CoreGameSignals.Instance.OnIncreaseScore += OnIncreaseScore;
             CoreGameSignals.Instance.OnGetScore += OnGetScore;
+            CoreGameSignals.Instance.OnCheckHighScore += OnCheckHighScore;
         }
 
         private void OnIncreaseScore()
@@ -50,11 +51,32 @@ namespace _SCRIPTS.Managers
         {
             return _score;
         }
+
+        private void OnCheckHighScore()
+        {
+            Debug.Log("cHECKsCORE");
+            if (CoreGameSignals.Instance.OnLoadHighestScore?.Invoke() != null)
+            {
+                Debug.Log("nULLdEGİL");
+                if (_score > CoreGameSignals.Instance.OnLoadHighestScore?.Invoke())
+                {
+                    Debug.Log("yENİsCORE");
+                    CoreGameSignals.Instance.OnSaveHighestScore?.Invoke();
+                }
+            }
+            else
+            {
+                Debug.Log("nULL");
+                CoreGameSignals.Instance.OnSaveHighestScore?.Invoke();
+            }
+            
+        }
         
         private void UnSubscribeEvents()
         {
             CoreGameSignals.Instance.OnIncreaseScore -= OnIncreaseScore;
             CoreGameSignals.Instance.OnGetScore -= OnGetScore;
+            CoreGameSignals.Instance.OnCheckHighScore -= OnCheckHighScore;
         }
 
         #endregion

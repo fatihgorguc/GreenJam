@@ -55,7 +55,7 @@ namespace _SCRIPTS.Controllers
             _isDead = true;
             Time.timeScale = 0.2f;
             dieFb.PlayFeedbacks();
-            CoreGameSignals.Instance.OnRestart?.Invoke();
+            CoreGameSignals.Instance.OnStopGame?.Invoke();
         }
 
         private void UnSubscribeEvents()
