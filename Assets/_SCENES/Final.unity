@@ -718,8 +718,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -273.64478, y: 0}
-  m_SizeDelta: {x: 247.6448, y: 247.6448}
+  m_AnchoredPosition: {x: -27, y: 274}
+  m_SizeDelta: {x: 282.5905, y: 282.5905}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &623006631
 MonoBehaviour:
@@ -1165,8 +1165,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1160690005}
   - {fileID: 623006630}
+  - {fileID: 1160690005}
   - {fileID: 1090552107}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -1473,8 +1473,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -26, y: 185}
-  m_SizeDelta: {x: 247.6448, y: 247.6448}
+  m_AnchoredPosition: {x: -275, y: 78.945}
+  m_SizeDelta: {x: 282.5905, y: 282.5905}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1160690006
 MonoBehaviour:
@@ -3511,7 +3511,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.23333333
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: d93f1e033936be8499b46d94e32bcae4, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6c115631f7dbb2e44996b58012e54451, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &2137492837
 Transform:
@@ -3556,12 +3556,12 @@ PrefabInstance:
     - target: {fileID: 2227523419185092599, guid: 7ac1e070d79e38342b966721cd6d5e0c,
         type: 3}
       propertyPath: spawnRateMax
-      value: 4.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2227523419185092599, guid: 7ac1e070d79e38342b966721cd6d5e0c,
         type: 3}
       propertyPath: spawnRateMin
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2436449654499389044, guid: 7ac1e070d79e38342b966721cd6d5e0c,
         type: 3}
@@ -3673,7 +3673,7 @@ PrefabInstance:
     - target: {fileID: 8632011575491531595, guid: 7ac1e070d79e38342b966721cd6d5e0c,
         type: 3}
       propertyPath: speed
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8632011575491531595, guid: 7ac1e070d79e38342b966721cd6d5e0c,
         type: 3}
